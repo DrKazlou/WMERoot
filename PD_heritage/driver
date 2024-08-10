@@ -1,0 +1,9 @@
+#!/bin/sh
+/sbin/rmmod universeII
+
+cp universeII.93.ko universeII.ko
+/sbin/insmod -f universeII.ko
+/sbin/rmmod universeII
+
+cp universeII.94.ko universeII.ko
+/sbin/insmod -f universeII.ko

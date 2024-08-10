@@ -1,0 +1,16 @@
+#ifndef V_895_H
+#define V_895_H
+
+#define V895_NCHANNELS 15
+
+#define V895_BASE_THRSH_REG 0x00
+#define V895_OUTP_W_0_7 0x40
+#define V895_OUTP_W_8_15 0x42
+#define V895_MAJORITY_THRSH 0x48
+#define V895_PATTERN_INH 0x4A
+#define V895_TESTPULSE 0x4A
+#define V895_FIXED_CODE 0xFA
+#define V895_MANUF_MOD_TYPE 0xFC
+#define V895_VERS_SER_NO 0xFE
+
+#endif

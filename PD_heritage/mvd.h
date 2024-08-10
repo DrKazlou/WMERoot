@@ -1,0 +1,112 @@
+/* mvd.h:
+ * global includes and defines
+ */
+
+// includes
+#include <string.h>
+#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <list>
+#include <math.h>
+#include <errno.h>
+#include <sys/stat.h>
+#include <iostream>
+#include <fstream>
+#include <pthread.h>
+#include <fcntl.h>
+#include <sys/ipc.h>
+#include <sys/sem.h>
+
+// typedefs
+typedef unsigned char BYTE;
+typedef unsigned short WORD;
+typedef unsigned int DWORD;
+
+// defines
+#ifndef MIN
+ #define MIN(a,b) (a<b ? a : b)
+ #define MAX(a,b) (a>b ? a : b)
+#endif
+#define LOWORD(l) ((WORD)(l))
+#define HIWORD(l) ((WORD)(((DWORD)(l) >> 16) & 0xFFFF))
+#define LOBYTE(w) ((BYTE)(w))
+#define HIBYTE(w) ((BYTE)(((WORD)(w) >> 8) & 0xFF))
+
+#define FPGABOARD_ADDR				0xbbba0000
+#define VME_READ_I2C_BYTE				0x0020
+#define VME_READ_I2C_2BYTE				0x0024
+#define VME_WRITE_I2C_BYTE				0x0028
+#define VME_WRITE_I2C_2BYTE				0x002C
+#define VME_READ_DATA					0x0030
+#define VME_SET_I2C_MASTER				0x003C
+#define VME_READ_RESULT					0x0040
+#define VME_TB_RESET_ADC_DCM			0x0070
+#define VME_TB_PHASESHIFT_COARSE_ADC_DCM 0x0074
+#define VME_TB_PHASESHIFT_FINE_ADC_DCM  0x0078
+#define VME_TB_FREQUENCY 				0x00A0
+#define VME_TB_COM						0x00A4
+#define VME_TB_CALIBRATION_LATENCY		0x00A8
+#define VME_TB_MULTITRIGGER_PERIOD		0x00AC
+#define VME_TB_MULTITRIGGER_COUNT		0x00B0
+#define VME_TRIGGERCOUNT				0x0090
+
+#define VME_HITFINDER_RESET				0x0210
+#define VME_HITFINDER_FRAMECNT			0x0214
+#define VME_HITFINDER_DISABLEMASK		0x021C
+#define VME_HITFINDER1_RAMADDR			0x0220
+#define VME_HITFINDER1_RAM1VALUE		0x0224
+#define VME_HITFINDER1_RAM2VALUE		0x0228
+#define VME_HITFINDER1_RAM3VALUE		0x022C
+#define VME_HITFINDER2_RAMADDR			0x0230
+#define VME_HITFINDER2_RAM1VALUE		0x0234
+#define VME_HITFINDER2_RAM2VALUE		0x0238
+#define VME_HITFINDER3_RAMADDR			0x0240
+#define VME_HITFINDER3_RAM1VALUE		0x0244
+#define VME_HITFINDER3_RAM2VALUE		0x0248
+#define VME_HITFINDER4_RAMADDR			0x0250
+#define VME_HITFINDER4_RAM1VALUE		0x0254
+#define VME_HITFINDER4_RAM2VALUE		0x0258
+#define VME_HITFINDER5_RAMADDR			0x0260
+#define VME_HITFINDER5_RAM1VALUE		0x0264
+#define VME_HITFINDER5_RAM2VALUE		0x0268
+#define VME_HITFINDER6_RAMADDR			0x0270
+#define VME_HITFINDER6_RAM1VALUE		0x0274
+#define VME_HITFINDER6_RAM2VALUE		0x0278
+#define VME_HITFINDER_FIFO1_COUNT		0x0300
+#define VME_HITFINDER_FIFO1_DATA		0x0304
+#define VME_HITFINDER_FIFO2_COUNT		0x0310
+#define VME_HITFINDER_FIFO2_DATA		0x0314
+#define VME_HITFINDER_FIFO3_COUNT		0x0320
+#define VME_HITFINDER_FIFO3_DATA		0x0324
+#define VME_HITFINDER_FIFO4_COUNT		0x0330
+#define VME_HITFINDER_FIFO4_DATA		0x0334
+#define VME_HITFINDER_FIFO5_COUNT		0x0340
+#define VME_HITFINDER_FIFO5_DATA		0x0344
+#define VME_HITFINDER_FIFO6_COUNT		0x0350
+#define VME_HITFINDER_FIFO6_DATA		0x0354
+#define VME_HITFINDER_HIT_THRESH		0x03E0
+#define VME_HITFINDER_NUMFRAME_THRESH	0x03E4
+#define VME_CLUSTERFINDER_FIFO_COUNT	0x0400
+#define VME_CLUSTERFINDER_FIFO_DATA1	0x0404
+#define VME_CLUSTERFINDER_FIFO_DATA2	0x0408
+#define VME_CLUSTERFINDER_TRIGGERCNT	0x0420
+
+#define TRIGGERBOARD_I2C_ADDR			0xb2 
+
+#define I2C_RESULT_SUCCESS				0x00
+#define I2C_RESULT_BUSY					0x01
+#define I2C_RESULT_NOACK_ADDR			0x02
+#define I2C_RESULT_NOACK_DATA			0x03
+#define I2C_RESULT_TIMEOUT				0x04
+
+#define COM_TRIGGER						0x01
+#define COM_CALIBRATION_TRIGGER			0x02
+#define COM_SOFTRESET					0x04
+#define COM_EXT_TRIGGER					0x08
+#define COM_HARDRESET					0x80
+
+#define SUPPLYBOARD_ADC             	0x48
+#define SUPPLYBOARD_ADC2            	0x44
+#define REF_VOLTAGE 					3.3
+
